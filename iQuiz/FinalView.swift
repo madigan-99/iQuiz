@@ -25,7 +25,7 @@ struct Final: View {
                 Spacer()
                 Text("You got: ")
                 Text(String(numRight))
-                Text("-")
+                Text("/")
                 Text(String(total))
                 Spacer()
                 
