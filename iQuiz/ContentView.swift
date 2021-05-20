@@ -12,9 +12,6 @@ struct ContentView: View {
     @State var fetch = [Quiz]()
     @State var dataURL = "https://tednewardsandbox.site44.com/questions.json"
     @State var isInvalid: Bool = false
-    @State var time: Int = 10
-    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-    
     
     var body: some View {
         
@@ -57,9 +54,7 @@ struct ContentView: View {
                         }
                     }
                 }
-            }.onAppear(perform: firstLoad).onAppear(perform: loadData).alert(isPresented: $isInvalid, content: {Alert(title: Text("Error Fetching Data"), message: Text("Data is invalid or you're offline, please try again!"), dismissButton: .default(Text("OK")))}).onReceive(timer) { _ in
-                self.fetch = loadData()
-            }
+            }.onAppear(perform: firstLoad).onAppear(perform: loadData).alert(isPresented: $isInvalid, content: {Alert(title: Text("Error Fetching Data"), message: Text("Data is invalid or you're offline, please try again!"), dismissButton: .default(Text("OK")))})
         }
     }
 }
